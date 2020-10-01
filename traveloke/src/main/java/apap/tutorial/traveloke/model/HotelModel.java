@@ -6,7 +6,7 @@ public class HotelModel {
     private String alamat;
     private String noTelepon;
 
-    public HotelModel(String idHotel) {
+    public HotelModel(String idHotel, String namaHotel, String alamat, String noTelepon) {
         this.idHotel = idHotel;
     }
 
