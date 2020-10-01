@@ -52,7 +52,7 @@ public class HotelController {
 
     @RequestMapping("/hotel/view")
     public String detailHotel(
-            @RequestParam(value = "idHotel") String idHotel,
+            @RequestParam(value= "idHotel") String idHotel,
             Model model
     ){
         // Mendapatkan HotelModel sesuai idhotel

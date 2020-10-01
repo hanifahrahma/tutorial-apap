@@ -28,7 +28,7 @@ public class HotelInMemoryService implements HotelService{
     public HotelModel getHotelByIdHotel(String idHotel){
         HotelModel temp = null;
         for(int i=0; i<listHotel.size(); i++){
-            if(listHotel.get(i).getIdHotel() == idHotel){
+            if(idHotel.equals(listHotel.get(i).getIdHotel())){
                 temp = listHotel.get(i);
             }
         }
