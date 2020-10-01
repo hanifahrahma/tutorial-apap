@@ -1,3 +1,81 @@
 # Tutorial APAP
 ## Authors
 * **Hanifah Rahmajati** - *1806146972* - *A*
+---
+## Tutorial 1
+### What I have learned today
+Pada tutorial kali ini, saya belajar bagaimana cara melakukan git revert dengan benar, selama ini saya 
+selalu bermasalah dalam commit-an. Selain itu saya juga belajar menggunakan Spring boot dan merasakan kemudahan
+yang ditawarkan oleh spring boot. Saya juga belajar menggunakan issue, selama ini dalam mata kuliah yang menggunakan
+github saya tidak pernah menggunakan hal tersebut dan issue ini dapat menggunakan label yang mempermudah kita membedakan.
+
+### Github
+1. Apa itu Issue Tracker? Apa saja masalah yang dapat diselesaikan dengan Issue Tracker? <br>
+Issue tracker adalah fitur yang diberikan oleh github untuk mengumpulkan semua user feedback.
+Dengan menggunakan issue, pengguna dapat dapat membantu melakukan tracking dan memperioritaskan 
+pekerjaan sesuai dengan kepentingan karena issue memberikan fitur label yang dapat membedakan 
+setiap issue yang ada, dan juga memberikan fitur pin issue yang penting. <br>
+referensi : [Github - About Issue](https://docs.github.com/en/github/managing-your-work-on-github/about-issues)
+
+2. Apa perbedaan dari git merge dan git merge --squash? <br>
+**Git Merge** adalah suatu command dalam git untuk membuat branch yang bercabang menjadi satu kembali 
+atau dengan kata lain mengintegrasikan kembali branch tersebut menjadi satu. sedangkan **git merge --squash**
+memungkinkan pengguna untuk membuat commit tunggal diatas branch namun tidak benar-benar membuat commit.
+Perbedaan yang mendasarnya adalah git merge --squash commit tidak melakukan update pada
+HEAD. Jadi git merge menggabungkan file yang ada dibranch yang memiliki commit dengan 
+beberapa commit yang berbeda, sedangan squash digabungkan jadi satu kesatuan.
+<br>referensi : [Medium - git merge & git merge --squash](https://medium.com/@mitsuyawatanabe/git-merge-and-git-merge-squash-26b3154cccd6)
+
+3. Apa keunggulan menggunakan Version Control System seperti Git dalam pengembangan suatu
+aplikasi?
+- Memudahkan saat bekerja didalam tim, yaitu pembagian pekerjaan yang diberikan untuk tiap-tiap anggota tim dan bagaimana hasil dari pekerjaan
+ itu dikumpulkan di tempat yang sama <br>
+- Memungkinkan kita mengembalikan source code aplikasi pada keadaan sebelumnya sehingg
+dapat berperan sebagai backup<br>
+- Membandingkan perubahan source code dari waktu ke waktu <br>
+- Dapat melihat siapa yang terakhir mengubah source code yang memungkinkan
+terjadinya error <br>
+- Dapat dengan mudah melakukan unduh code saat ini ke local dan pekerjaan tim pun terlacak
+<br>referensi : [Version Control System](https://agungsulistyan.wordpress.com/2016/06/16/mengenal-version-control-system/)
+
+### Spring
+4. Apa itu library & dependency? <br>
+Library adalah kumpulan program atau fungsi yang telah ada pada compiler atau intepreter 
+untuk memudahkan pemrogram membuat program dan tidak perlu mengakses langsung sistem komputer 
+untuk memprogram. Sedangkan dependency adalah ketergantungan suatu komponen dengan komponen
+lainnya seperti suatu class dengan suatu interface
+<br>referensi : [Library](http://zwhingly.blogspot.com/2016/04/java-serta-library-package-class-object.html)
+<br>referensi : [Dependency](http://tutorials.jenkov.com/ood/understanding-dependencies.html#whatis)
+
+5. Mengapa kita menggunakan Maven? Apakah ada alternatif dari Maven? <br>
+Maven adalah salah satu build tool yang sering digunakan dalam proyek aplikasi Java dengan
+menggunakan konsep Project Object Model (POM). POM tersebut berisi informasi 
+dan konfigurasi yang digunakan Maven untuk membuat project. 
+Pada dasarnya POM adalah sebuath XML File yang terdapat di dalam project Maven dan di dalam File 
+inilah konfigurasi dari project kita berada. Keunggulan dari Maven adalah :
+- Membuat struktur project sendiri sehingga project tersebut akan dapat dibuka dengan berbagai IDE
+- Memanage Dependency dengan Maven menjadi mudah
+- Maven secara dinamis akan mengunduh library dan menyimpanya ke dalam cache local sehingga  bisa digunakan untuk lebih dari satu project.
+<br> Ada alternatif lainnya seperti ANT, GNUMake, Gradle, Cmake dll.
+<br>referensi : [Petani Kode - Maven](https://www.petanikode.com/java-maven/)
+<br>referensi : [Medium - Maven](https://medium.com/@acep.abdurohman90/mengenal-maven-sebagai-java-build-tools-5ba752f75812)
+
+6. Selain untuk pengembangan web, apa saja yang bisa dikembangkan dengan Spring framework?
+- Membuat RESTful services
+- Memanipulasi dan menyambungkan dengan Database, modulnya menyediakan SQL, NOSQL
+- REST API
+- Membangun Enterprise application
+selain itu spring dapat digunakan untuk menangani external resources atau sistem
+yang bekerja dengan program.
+<br>referensi : [What is spring framework used for?](https://www.quora.com/What-is-Spring-Framework-used-for#:~:text=Millions%20of%20developers%20around%20the,and%20speed%20up%20development%20time.)
+
+7. Apa perbedaan dari @RequestParam dan @PathVariable? Kapan sebaiknya menggunakan @RequestParam atau @PathVariable?
+<br>@RequestParam digunakan untuk melakukan request parameter pada URL atau dapat 
+disebut query parameter, selain itu biasanya digunakan pada web service tradisional dimana data-data diteruskan dengn query. 
+Sedangkan @PathVariable ekstrak dari URI, selain itu juga biasanya digunakan web service RESTful dimana data 
+eksplisit pada URL. 
+<br>referensi : [Java Code Geeks](https://www.javacodegeeks.com/2017/10/differences-requestparam-pathvariable-annotations-spring-mvc.html)
+
+### What I did not understand
+- [] Saya masih kurang mengerti cara menentukan dependencies yang didownload pada tutorial 1
+- [] Saya masih kurang mengerti melakukan ngoding dari awal sekali menggunakan spring boot
