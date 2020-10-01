@@ -91,7 +91,8 @@ Akan terjadi error karena belum ada View Template (HTML & Thymeleaf) yang telah 
 Memberikan fleksibilitas untuk memutuskan dimana ingin mengirim objek. Jadi kegunaannya adalah tidak perlu setter method.
 Pada kasus ini @Autowired digunakan pada HotelService dimana HotelController tidak akan dapat terbentuk jika tidak ada HotelService.
 Hal ini disebut dependency, dimana HotelController bergantung dengan HotelService.
-
+Kesimpulannya adalah pada hotelController tidak perlu ada setter hotelservice karena dengan autowired spring akan otomatis 
+membuat object dari yang di inject yaitu hotelservice.
 
 ### Pertanyaan 3
 ##### Cobalah untuk menambahkan sebuah Hotel dengan mengakses link berikut: http://localhost:8080/hotel/add?idHotel=1&namaHotel=Papa%20APAP&alamat=Quanta%20Fasilkom Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.
