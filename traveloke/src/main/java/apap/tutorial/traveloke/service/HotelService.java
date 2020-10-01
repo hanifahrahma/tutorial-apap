@@ -6,4 +6,6 @@ public interface HotelService {
     void addHotel(HotelModel hotel);
     List<HotelModel> getHotelList();
     HotelModel getHotelByIdHotel(String idHotel);
+    boolean deleteHotel(String idHotel);
+    HotelModel updatenoTelp(String idHotel, String noTelepon);
 }

@@ -78,4 +78,33 @@ eksplisit pada URL.
 
 ### What I did not understand
 - [] Saya masih kurang mengerti cara menentukan dependencies yang didownload pada tutorial 1
-- [] Saya masih kurang mengerti melakukan ngoding dari awal sekali menggunakan spring boot
+- [x] Saya masih kurang mengerti melakukan ngoding dari awal sekali menggunakan spring boot
+
+---
+## Tutorial 2
+### Pertanyaan 1 
+##### Cobalah untuk menambahkan sebuah Hotel dengan mengakses link berikut: http://localhost:8080/hotel/add?idHotel=1&namaHotel=Papa%20APAP&alamat=Quanta%20Fasilkom&noTelepon=081xxx​ Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi?
+Akan terjadi error karena belum ada View Template (HTML & Thymeleaf) yang telah didefinisikan pada Controller di fungsi addHotel. Pada fungsi tersebut, akan me-return view template ‘addHotel.html’ yang dimana belum dilakukan pembuatan.
+
+### Pertanyaan 2
+##### Menurut kamu anotasi @Autowired pada class Controller tersebut merupakan implementasi dari konsep apa? Dan jelaskan secara singkat cara kerja @Autowired tersebut dalam konteks service dan controller yang telah kamu buat
+Memberikan fleksibilitas untuk memutuskan dimana ingin mengirim objek. Jadi kegunaannya adalah tidak perlu setter method.
+Pada kasus ini @Autowired digunakan pada HotelService dimana HotelController tidak akan dapat terbentuk jika tidak ada HotelService.
+Hal ini disebut dependency, dimana HotelController bergantung dengan HotelService.
+
+
+### Pertanyaan 3
+##### Cobalah untuk menambahkan sebuah Hotel dengan mengakses link berikut: http://localhost:8080/hotel/add?idHotel=1&namaHotel=Papa%20APAP&alamat=Quanta%20Fasilkom Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.
+ Hal ini dikarenakan pada Controller di method addHotel kita mendefinisikan noTelepon mempunyai required true. Sehingga setiap pembuatan hotel baru diperlukan semua variable terisi jika tidak maka akan terjadi eror.
+
+
+### Pertanyaan 4
+##### Jika Papa APAP ingin melihat Hotel dengan nama Papa APAP, link apa yang harus diakses?
+Sebelumnya papa APAP harus membuat hotelnya terlebih dahulu di  http://localhost:8080/hotel/add?idHotel=1&namaHotel=Papa%20APAP&alamat=Quanta%20Fasilkom. Kemudian masuk ke http://localhost:8080/hotel/viewall atau jika Papa APAP mengetahui idHotelnya dapat mengakses  http://localhost:8080/hotel/view?idHotel=(isi_id) 
+
+
+### Pertanyaan 5
+##### Tambahkan 1 contoh Hotel lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/hotel/viewall ​ , apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.
+Menampilkan semua data hotel yang sudah terbuat. Hal ini dikarenakan setiap hotel yang dibuat akan dimasukkan ke dalam listHotel.
+<br>
+![alt text](Image/foto-tutorial-2/5.jpg?raw=true)
