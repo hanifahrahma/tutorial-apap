@@ -1,5 +1,6 @@
 package apap.tutorial.traveloke.service;
 
+import apap.tutorial.traveloke.model.HotelModel;
 import apap.tutorial.traveloke.model.KamarModel;
 import apap.tutorial.traveloke.repository.KamarDb;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,32 @@ public class KamarServiceImpl implements KamarService{
     }
 
     @Override
-    public List<KamarModel> findAlKamarByIdHotel(Long idHotel) {
+    public List<KamarModel> findAllKamarByIdHotel(Long idHotel) {
         return kamarDb.findByHotelId(idHotel);
+    }
+
+    @Override
+    public KamarModel getKamarBynoKamar(Long noKamar) {
+        return kamarDb.findBynoKamar(noKamar).get();
+    }
+
+    @Override
+    public KamarModel updateKamar(KamarModel kamar) {
+        KamarModel targetKamar = kamarDb.findBynoKamar(kamar.getNoKamar()).get();
+        try{
+            targetKamar.setNamaKamar(kamar.getNamaKamar());
+            targetKamar.setTipe(kamar.getTipe());
+            targetKamar.setKapasitasKamar(kamar.getKapasitasKamar());
+//            targetKamar.setHotel(kamar.getHotel());
+            kamarDb.save(targetKamar);
+            return targetKamar;
+        } catch (NullPointerException nullException){
+            return null;
+        }
+    }
+
+    @Override
+    public void deleteKamar(KamarModel kamar) {
+        kamarDb.delete(kamar);
     }
 }

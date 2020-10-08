@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Controller
@@ -49,9 +50,14 @@ public class HotelController {
             @PathVariable Long idHotel,
             Model model
     ){
+        try{
         HotelModel hotel = hotelService.getHotelByIdHotel(idHotel);
         model.addAttribute("hotel", hotel);
         return "form-update-hotel";
+        }
+        catch (NoSuchElementException noSuchElementException) {
+        return "error-hotel";
+        }
     }
 
     @PostMapping("/hotel/change")
@@ -69,14 +75,43 @@ public class HotelController {
             @RequestParam(value = "idHotel") Long idHotel,
             Model model
     ){
-        HotelModel hotel = hotelService.getHotelByIdHotel(idHotel);
-        List<KamarModel> listKamar = kamarService.findAlKamarByIdHotel(idHotel);
-        model.addAttribute("hotel", hotel);
-        model.addAttribute("listKamar", listKamar);
-        return "view-hotel";
+
+        try{
+            HotelModel hotel = hotelService.getHotelByIdHotel(idHotel);
+            List<KamarModel> listKamar = kamarService.findAllKamarByIdHotel(idHotel);
+            boolean temp = (listKamar.size() != 0);
+            model.addAttribute("hotel", hotel);
+            model.addAttribute("listKamar", listKamar);
+            model.addAttribute("temp", temp);
+            return "view-hotel";
+        }
+        catch (NoSuchElementException noSuchElementException) {
+            return "error-hotel";
+        }
     }
 
-    
+    @RequestMapping("/hotel/viewall")
+    public String listHotel(Model model) {
+        List<HotelModel> listHotel = hotelService.getHotelListASC();
+        model.addAttribute("listHotel", listHotel);
+        return "viewall-hotel";
+    }
+
+    @GetMapping("/hotel/delete/{id}")
+    public String deleteHotelView(
+            @PathVariable Long id,
+            Model model
+    ){
+        try {
+            HotelModel hotel = hotelService.getHotelByIdHotel(id);
+            boolean boll = hotelService.deleteHotel(hotel);
+            model.addAttribute("boll", boll);
+            return "delete-hotel";
+        }
+        catch (NoSuchElementException noSuchElementException) {
+            return "error-hotel";
+        }
+    }
 //    @RequestMapping("/hotel/add")
 //    public String addHotel(
 //        @RequestParam(value = "idHotel", required = true) String idHotel,

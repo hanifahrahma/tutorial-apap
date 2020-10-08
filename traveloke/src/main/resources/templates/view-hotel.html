@@ -10,20 +10,31 @@
     <h3 th:text="'Nama Hotel: '+ ${hotel.namaHotel}"></h3>
     <h3 th:text="'Alamat Hotel: '+ ${hotel.alamat}"></h3>
     <h3 th:text="'Nomor Telepon: '+ ${hotel.nomorTelepon}"></h3>
-
+    <td><a th:href="@{/hotel/change/}+${hotel.id}">Update</a></td> <br>
+    <td><a th:href="@{/hotel/delete/}+${hotel.id}">Delete</a></td>
+    <hr>
 </section>
 <section>
     <h2>Daftar Kamar:</h2>
-    <div th:each="kamar : ${listKamar}">
-        <h3 th:text="'No Kamar: '+ ${kamar.noKamar}"></h3>
-        <h3 th:text="'Nama Kamar: '+ ${kamar.namaKamar}"></h3>
-        <h3 th:if="${kamar.tipe == 0}">Tipe : Deluxe</h3>
-        <h3 th:if="${kamar.tipe == 1}">Tipe : Executive</h3>
-        <h3 th:if="${kamar.tipe == 2}">Tipe : President Suite</h3>
-        <h3 th:text="'Kapasitas Kamar: '+ ${kamar.kapasitasKamar}"></h3>
+    <div th:switch="${temp}">
+        <div th:case="true">
+            <div th:each="kamar : ${listKamar}">
+                <h3 th:text="'No Kamar: '+ ${kamar.noKamar}"></h3>
+                <h3 th:text="'Nama Kamar: '+ ${kamar.namaKamar}"></h3>
+                <h3 th:if="${kamar.tipe == 0}">Tipe : Deluxe</h3>
+                <h3 th:if="${kamar.tipe == 1}">Tipe : Executive</h3>
+                <h3 th:if="${kamar.tipe == 2}">Tipe : President Suite</h3>
+                <h3 th:text="'Kapasitas Kamar: '+ ${kamar.kapasitasKamar}"></h3>
+                <td><a th:href="@{/kamar/change/}+${kamar.noKamar}">Update</a></td> <br>
+                <td><a th:href="@{/kamar/delete/}+${kamar.noKamar}">Delete</a></td>
+                <hr>
+            </div>
+        </div>
+        <h2 th:case="false"> Hotel belum memiliki daftar kamar</h2>
     </div>
+
     <td><a th:href="@{/kamar/add/}+${hotel.id}">Add Kamar</a></td>
 </section>
-<td><a th:href="@{/}">Kembali</a></td>
+<td><a th:href="@{/}">Home</a></td>
 </body>
 </html>

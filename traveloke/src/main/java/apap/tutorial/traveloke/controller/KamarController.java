@@ -45,4 +45,35 @@ public class KamarController {
         model.addAttribute("kamar", kamar);
         return "add-kamar";
     }
+
+    @GetMapping("/kamar/change/{noKamar}")
+    public String changeKamarFormPage(
+            @PathVariable Long noKamar,
+            Model model
+    ){
+        KamarModel kamar = kamarService.getKamarBynoKamar(noKamar);
+        model.addAttribute("kamar", kamar);
+        return "form-update-kamar";
+    }
+
+    @PostMapping("/kamar/change")
+    public String changeKamarFormSubmit(
+            @ModelAttribute KamarModel kamar,
+            Model model
+    ){
+//        System.out.println(kamar.getNoKamar());
+        KamarModel updateKamar = kamarService.updateKamar(kamar);
+        model.addAttribute("kamar", updateKamar);
+        return "update-kamar";
+    }
+
+    @GetMapping("/kamar/delete/{noKamar}")
+    public String deleteKamarView(
+            @PathVariable Long noKamar,
+            Model model
+    ){
+        KamarModel kamar = kamarService.getKamarBynoKamar(noKamar);
+        kamarService.deleteKamar(kamar);
+        return "delete-kamar";
+    }
 }

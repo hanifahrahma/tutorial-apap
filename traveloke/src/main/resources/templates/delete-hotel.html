@@ -5,7 +5,11 @@
     <title>Delete Hotel</title>
 </head>
 <body>
-<h2> Hotel berhasil dihapus</h2>
+<div th:switch="${boll}">
+    <h2 th:case="true"> Hotel berhasil dihapus</h2>
+    <h2 th:case="false"> Hotel gagal dihapus</h2>
+</div>
+
 <a href="/hotel/viewall">Kembali</a>
 </body>
 </html>

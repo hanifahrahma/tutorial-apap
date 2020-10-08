@@ -59,8 +59,8 @@ public class HotelModel implements Serializable{
         return nomorTelepon;
     }
 
-    public void setNomorTelepon(Integer noTelepon) {
-        this.nomorTelepon = noTelepon;
+    public void setNomorTelepon(Integer nomorTelepon) {
+        this.nomorTelepon = nomorTelepon;
     }
 
     public List<KamarModel> getListkamar() {

@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>Change Data Hotel</h2>
-<form th:action="@{/>hotel/change}"th:object="${hotel}" method="post">
+<form th:action="@{/hotel/change}"th:object="${hotel}" method="post">
     <input type="hidden" th:field="*{id}">
     Nama Hotel : <br>
     <input type="text" name="namaHotel" th:value="*{namaHotel}"/>
@@ -19,5 +19,7 @@
     <br><br>
     <button type="submit" value="submit">Submit</button>
 </form>
+
+
 </body>
 </html>
