@@ -25,10 +25,10 @@ public class HotelInMemoryService implements HotelService{
     }
 
     @Override
-    public HotelModel getHotelByIdHotel(String idHotel){
+    public HotelModel getHotelByIdHotel(Long idHotel){
         HotelModel temp = null;
         for(int i=0; i<listHotel.size(); i++){
-            if(idHotel.equals(listHotel.get(i).getIdHotel())){
+            if(idHotel.equals(listHotel.get(i).getId())){
                 temp = listHotel.get(i);
             }
         }
@@ -36,26 +36,33 @@ public class HotelInMemoryService implements HotelService{
     }
 
     @Override
-    public boolean deleteHotel(String idHotel) {
-        for(int i=0; i<listHotel.size(); i++){
-            if(idHotel.equals(listHotel.get(i).getIdHotel())){
-                listHotel.remove(i);
-                return true;
-            }
-        }
-        return false;
-
-    }
-
-    @Override
-    public HotelModel updatenoTelp(String idHotel, String noTelepon){
-        for(int i=0; i<listHotel.size(); i++){
-            if(idHotel.equals(listHotel.get(i).getIdHotel())){
-                listHotel.get(i).setNoTelepon(noTelepon);
-                return listHotel.get(i);
-            }
-        }
+    public HotelModel updateHotel(HotelModel hotel) {
         return null;
     }
+
+//    @Override
+//    public boolean deleteHotel(String idHotel) {
+//        for(int i=0; i<listHotel.size(); i++){
+//            if(idHotel.equals(listHotel.get(i).getIdHotel())){
+//                listHotel.remove(i);
+//                return true;
+//            }
+//        }
+//        return false;
+//
+//
+//    }
+
+//    @Override
+//    public HotelModel updatenoTelp(String idHotel, String noTelepon){
+//        for(int i=0; i<listHotel.size(); i++){
+//            if(idHotel.equals(listHotel.get(i).getIdHotel())){
+//                listHotel.get(i).setNoTelepon(noTelepon);
+//                return listHotel.get(i);
+//            }
+//        }
+//        return null;
+//
+//    }
 }
 
