@@ -7,7 +7,7 @@
 <body>
 <div th:switch="${boll}">
     <h2 th:case="true"> Hotel berhasil dihapus</h2>
-    <h2 th:case="false"> Hotel gagal dihapus</h2>
+    <h2 th:case="false"> Hotel tidak bisa dihapus karena memiliki kamar</h2>
 </div>
 
 <a href="/hotel/viewall">Kembali</a>

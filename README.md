@@ -110,3 +110,57 @@ Sebelumnya papa APAP harus membuat hotelnya terlebih dahulu di  http://localhost
 Menampilkan semua data hotel yang sudah terbuat. Hal ini dikarenakan setiap hotel yang dibuat akan dimasukkan ke dalam listHotel.
 <br>
 ![alt text](Image/foto-tutorial-2/5.jpg?raw=true)
+---
+## Tutorial 3
+##### 1. Pada class KamarDb, terdapat method findAllByHotelId, apakah kegunaan dari method tersebut?
+Sebelumnya dapat dilihat dari KamarDB yang extends JpaRepository<KamarModel, Long> sehingga JpaRepository 
+membantu dalam menyediakan method-method bawaannya. Selain itu dalam modul JPA terdapat QueryMethods, dimana 
+membantu menetapkan query secara manual sebagai String atau bahkan dapat derived hanya dari nama method. 
+Walaupun cara ini sangat mudah, namun ada beberapa kasus yang tidak dapat membaca nama methodnya, sehingga dapat 
+menggunakan method bawaan saja ataupun menggunakan @Query. Maka pada kasus kali ini findByHotelID dibaca oleh JPA sebagai 
+pencarian semua kamar yang memiliki idHotel  yang sesuai.
+<br>
+referensi : [JPA Repositories documentation](https://docs.spring.io/spring-data/jpa/docs/1.5.0.RELEASE/reference/html/jpa.repositories.html)
+
+##### 2. Pada class HotelController, jelaskan perbedaan method addHotelFormPage dan addHotelSubmit?
+Perbedaan paling mendasar adalah addHotelFormPage menggunakan @GetMapping sedangkan addHotelSubmit 
+menggunakan @PostMapping. Sebelumnya, dapat diketahui @PostMapping yaitu anotasi yang digunakan untuk HTTP 
+POST requests dengan menyederhanakan dari  @RequestMapping(method = RequestMethod.POST). Sehingga dari penjelasan 
+ini, dapat disimpulkan addHotelFormPage hanya menampilkan form pembuatan Hotel baru dan inisiasi pembuatan hotel baru, 
+hal ini juga dapat dilihat dari htmlnya yaitu "form-add-hotel". Pada html tersebut, dapat dilihat object yang digunakan 
+adalah hotel yang sudah dilakukan pendefinisian sebagai hotel baru di HotelController dan method yang digunakan adalah post.
+ Setelah user melakukan submit, maka akan memproses post dimana hal ini dilakukan oleh method addHotelSubmit. 
+ Pada method ini akan terjadi “post” jika sesuai dengan semua ketentuan dan juga terjadi pemanggilan method di bagian service 
+ untuk melakukan penyimpanan dengan bantuan save. Selain itu juga parameter kedua method ini berbeda, pada addHotelSubmit 
+ menggunakan @ModelAttribute dimana memiliki pengertian sebuah anotasi yang mengikat hasil return suatu method ke sebuah model dan 
+ menampilkannya pada web. Sehingga pada addHotelSubmit menggunakan hasil kembalian dari addHotelFormPage untuk dilakukan post.
+ <br>
+ Referensi : 
+ - [PostMapping documentation](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/PostMapping.html)
+ - [Spring MVC](https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation)
+ 
+ ##### 3. Jelaskan kegunaan dari JPA Repository!
+ JPA adalah metode melakukan akses database dengan bahasa Java sehingga JPA dapat mempermudah dalam melakukan pengaksesan 
+ database. Sedangkan JPA repository adalah java persistance API yang memudahkan membuat CRUD pada String Data. Dengan menggunakan 
+ JPA repository kita dalam menggunakan method - method yang disediakan tanpa harus melakukan penulisan method berkali - kali. Hal 
+ ini dikarenakan JPA repository mempunyai method bawaan yang dapat digunakan disemua interface. Salah satunya seperti pada nomor 1 
+ yaitu QueryMethods, yang dimana dapat membantu menetapkan query secara manual sebagai String atau bahkan dapat derived hanya dari nama method.
+<br>
+Referensi : [JPA Repository](https://josikie.com/tutorial-mencari-data-pada-entity-sesuai-kategori-dengan-spring-boot-dan-jparepository/)
+
+##### 4. Sebutkan dan jelaskan di bagian kode mana sebuah relasi antara HotelModel dan KamarModel dibuat?
+Pada bagian Controller di class HotelController dan juga KamarController. Pertama pada class KamarController, digunakan 
+untuk menghubungkan pembuatan kamar dengan Hotel. Pada KamarModel hubungan kepemilikan hotel dilihat dari HotelModel bukan 
+hanya idHotel, sehingga pada KamarController dibutuhkan pencarian HotelModel berdasarkan idHotel yang tekait. Kemudian pada
+ HotelController, terdapat method viewDetailHotel yang merupakan method yang menampilkan deskripsi hotel beserta deskripsi kamar 
+ yang terdaftar pada hotel tersebut. Hal ini membutuhkan KamarModel untuk dapat melihat deskripsi kamar disetiap hotel yang dituju.
+
+
+##### 5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER!
+- FetchType.Lazy digunakan untuk hubungan ManyToMany dan OneToMany, waktu load lebih sedikit dibandingkan Eager dikarenakan hibernate tidak melakukan load semua collection object di child saat object parent di fetch, jadi hanya dilakukan load saat digunakan method getter.
+- FetchType.Eager digunakan untuk hubungan ManyToOne dan OneToOne, terlalu banyak loading data yang tidak penting sehingga memberikan pengaruh pada performa karena hibernate melakukan load semua collection object di child setelah object parent di fetch.
+- Dalam Hibernate menyediakan Cascade untuk hubungan OneToMany yang memudahkan operasi data. CascadeType.ALL berarti semua operasi CRUD data berpengaruh ke entitas tersebut. 
+<br>
+Referensi :
+- [Cascade pada Hibernate](https://agung-setiawan.com/contoh-penggunaan-cascade-pada-hibernate/)
+- [FetchType](https://www.tutorialspoint.com/difference-between-lazy-and-eager-loading-in-hibernate)
