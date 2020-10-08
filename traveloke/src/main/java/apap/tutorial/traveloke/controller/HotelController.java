@@ -41,7 +41,7 @@ public class HotelController {
             Model model
     ){
         hotelService.addHotel(hotel);
-        model.addAttribute("idHotel", hotel.getId());
+        model.addAttribute("id", hotel.getId());
         return "add-hotel";
     }
 
