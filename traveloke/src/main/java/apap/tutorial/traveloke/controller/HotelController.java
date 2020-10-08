@@ -60,7 +60,7 @@ public class HotelController {
             Model model
     ){
         HotelModel hotelUpdated = hotelService.updateHotel(hotel);
-        model.addAttribute("hotel", hotel);
+        model.addAttribute("hotel", hotelUpdated);
         return "update-hotel";
     }
 
@@ -75,6 +75,8 @@ public class HotelController {
         model.addAttribute("listKamar", listKamar);
         return "view-hotel";
     }
+
+    
 //    @RequestMapping("/hotel/add")
 //    public String addHotel(
 //        @RequestParam(value = "idHotel", required = true) String idHotel,

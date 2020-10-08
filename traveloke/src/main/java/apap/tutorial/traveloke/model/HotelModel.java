@@ -24,8 +24,8 @@ public class HotelModel implements Serializable{
     private String alamat;
 
     @NotNull
-    @Column(name="noTelepon", nullable = false)
-    private Integer noTelepon;
+    @Column(name="nomorTelepon", nullable = false)
+    private Integer nomorTelepon;
 
     @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<KamarModel> listkamar;
@@ -56,11 +56,11 @@ public class HotelModel implements Serializable{
     }
 
     public Integer getNomorTelepon() {
-        return noTelepon;
+        return nomorTelepon;
     }
 
     public void setNomorTelepon(Integer noTelepon) {
-        this.noTelepon = noTelepon;
+        this.nomorTelepon = noTelepon;
     }
 
     public List<KamarModel> getListkamar() {
