@@ -1,6 +1,5 @@
 package apap.tutorial.traveloke.service;
 
-import apap.tutorial.traveloke.model.HotelModel;
 import apap.tutorial.traveloke.model.KamarModel;
 import apap.tutorial.traveloke.repository.KamarDb;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -49,5 +49,10 @@ public class KamarServiceImpl implements KamarService{
     @Override
     public void deleteKamar(KamarModel kamar) {
         kamarDb.delete(kamar);
+    }
+
+    @Override
+    public KamarModel getKamarBynamaKamar(String namaKamar) {
+        return kamarDb.findBynamaKamar(namaKamar).get();
     }
 }
