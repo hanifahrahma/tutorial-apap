@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Delete Hotel</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
 <div th:switch="${boll}">
     <h2 th:case="true"> Hotel berhasil dihapus</h2>
     <h2 th:case="false"> Hotel tidak bisa dihapus karena memiliki kamar</h2>
