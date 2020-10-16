@@ -164,3 +164,39 @@ hanya idHotel, sehingga pada KamarController dibutuhkan pencarian HotelModel ber
 Referensi :
 - [Cascade pada Hibernate](https://agung-setiawan.com/contoh-penggunaan-cascade-pada-hibernate/)
 - [FetchType](https://www.tutorialspoint.com/difference-between-lazy-and-eager-loading-in-hibernate)
+---
+## Tutorial 4
+##### 1. Jelaskan perbedaan th:include dan th:replace!
+Sebelumnya dapat diketahui host tag adalah tag yang berisi th:replace, th:include maupun th:insert. Sedangkan fragment tag adalah tag yang berisi th:fragment.
+Berikut penjelasan dari th:replace dan th:include
+- th:replace akan menghapus dan menggantikan host tag dengan konten fragment yang spesifik termasuk fragment tagnya
+- th:include akan memasukkan spesifik fragment sebagai body dari host tag nya namun tidak termasuk fragment tag nya
+	Contoh :
+<div th:fragment="target" id="tagWithFragmentAttribute">
+ <div id="contentGoesHere"></div>
+</div>
+<div id="tagWithReplaceAttribute" th:replace="fragments/header :: targetFragmentToIncludeInOurPage"></div>
+Menjadi : 
+<div id="tagWithFragmentAttribute">
+ <div id="contentGoesHere"></div>
+</div>
+<div id="tagWithIncludeAttribute" th:include="fragments/header :: targetFragmentToIncludeInOurPage"></div>
+Menjadi : 
+<div id="tagWithIncludeAttribute">
+ <div id="contentGoesHere"></div>
+</div>
+
+Referensi :
+https://anshulgnit.blogspot.com/2018/05/difference-between-thymeleaf-attribute-replace-insert-and-include.html
+https://attacomsian.com/blog/thymeleaf-fragments 
+Jelaskan apa fungsi dari th:object!
+th:object digunakan untuk menspesifikan object yang dibuat saat submit form  
+https://www.baeldung.com/thymeleaf-in-spring-mvc 
+Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?
+$ digunakan saat ingin merujuk pada objek yang didapat dari model.addAttribute pada Controller. Sedangkan * akan merujuk pada data yang berada pada object yang sudah didefinisikan sebelumnya pada th:object.
+
+Bagaimana kamu menyelesaikan latihan nomor 3?  
+Pertama saya mencari terlebih dahulu cara membuat navbar yang tulisannya berada pada pojok kanan. Kemudian saya mendapatkannya pada bootstrap.
+Kedua saya mencari ide bagaimana fragment dapat diisi sebuah parameter saat dipanggil pada html tiap halaman. Saya menggunakan referensi pada https://anshulgnit.blogspot.com/2018/05/difference-between-thymeleaf-attribute-replace-insert-and-include.html
+Ketiga saya mengubah fragment.html saya pada fragment tag navbar menjadi dapat menerima parameter sehingga dapat mengganti sesuai halaman tersebut.
+Kemudian saya mengisi parameter yang sesuai halaman pada tiap html tersebut.

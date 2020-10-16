@@ -7,7 +7,7 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-<nav th:replace="fragments/fragment :: navbar"></nav>
+<nav th:replace="fragments/fragment :: navbar(field='Error Hotel')"></nav>
 <h2> Hotel tidak ditemukan</h2>
 <td><a th:href="@{/}">Kembali</a></td>
 </body>
