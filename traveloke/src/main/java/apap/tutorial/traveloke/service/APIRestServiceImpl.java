@@ -19,7 +19,7 @@ public class APIRestServiceImpl implements APIRestService{
 
     public APIRestServiceImpl(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder
-                .defaultHeader("x-rapidapi-key", "a1fac913b6msh6dd7fc748095b76p153a4bjsnef6f01c14584")
+                .defaultHeader("x-rapidapi-key", "03eee448d6mshb206ca11b99ba85p1f9450jsnb3253763806f")
                 .defaultHeader("x-rapidapi-host", "hotels-com-free.p.rapidapi.com")
                 .defaultHeader("useQueryString", "true")
                 .baseUrl(Setting.cityUrl).build();
