@@ -2,6 +2,7 @@ package apap.tutorial.traveloke.restcontroller;
 
 import apap.tutorial.traveloke.model.HotelModel;
 import apap.tutorial.traveloke.rest.HotelDetail;
+import apap.tutorial.traveloke.service.APIRestService;
 import apap.tutorial.traveloke.service.HotelRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,9 @@ import java.util.NoSuchElementException;
 public class HotelRestController {
     @Autowired
     private HotelRestService hotelRestService;
+
+    @Autowired
+    private APIRestService apiRestService;
 
     @PostMapping(value="/hotel")
     private HotelModel createHotel(@Valid @RequestBody HotelModel hotel, BindingResult bindingResult){
@@ -84,8 +88,17 @@ public class HotelRestController {
         return hotelRestService.getStatus(idHotel);
     }
 
-    @GetMapping(value = "/full")
+    @GetMapping(value="/full")
     private Mono<HotelDetail> postStatus() {
+        System.out.println("masuk control");
         return hotelRestService.postStatus();
     }
+    @GetMapping(value="/hotel/find")
+    private Mono<String> find(@RequestParam String name){
+        return apiRestService.find(name);
+    }
+//    @GetMapping(value = "/full")
+//    private Mono<HotelDetail> postStatus(){
+//        return hotelRestService.postStatus();
+//    }
 }

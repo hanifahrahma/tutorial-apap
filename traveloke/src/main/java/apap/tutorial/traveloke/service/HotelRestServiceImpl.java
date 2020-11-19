@@ -74,12 +74,22 @@ public class HotelRestServiceImpl implements  HotelRestService{
     @Override
     public Mono<HotelDetail> postStatus() {
         MultiValueMap<String, String> data = new LinkedMultiValueMap<>();
+        System.out.println("masuk1");
         data.add("alamat", "Jl. X");
         data.add("nomorTelepon", "08111112");
+        System.out.println("masuk2");
         return  this.webClient.post().uri("/rest/hotel/full")
                 .syncBody(data)
                 .retrieve()
                 .bodyToMono(HotelDetail.class);
     }
+
+//    @Override
+//    public Mono<HotelDetail> postStatus() {
+//        MultiValueMap<String, String> data = new LinkedMultiValueMap<>();
+//        data.add("alamat", "JL.X");
+//        data.add("nomorTelepon", "08111112");
+//        return this.webClient.post().uri("/rest/hotel/full").syncBody(data).retrieve().bodyToMono(HotelDetail.class);
+//    }
 }
 
