@@ -202,7 +202,7 @@ Sedangkan * akan merujuk pada data yang berada pada object yang sudah didefinisi
 ## Tutorial 5
 ---
 ##### 1. Apa itu Postman? Apa kegunaannya?
-Postman adalah sebuah aplikasi yang berfungsi sebagai REST Client untuk uji coba REST API. Postman biasa digunakan oleh developer pembuat API sebagai tools untuk menguji API yang telah mereka buat. 
+Postman adalah sebuah aplikasi yang berfungsi sebagai REST Client untuk uji coba REST API. Postman biasa digunakan oleh developer pembuat API sebagai tools untuk menguji API yang telah mereka buat. Pengguna juga diperbolehkan untuk membuat dan menyimpan HTTP request yang dapat dijalankan dan dibaca hasilnya nantinya.
 <br> 
 Postman merupakan tool untuk melakukan proses development API, untuk saat ini sudah banyak fitur-fitur yang sangat membantu dalam proses development API, diantaranya Collection, Environment, response, MockServer, Script Test, Automated Test (Runner)
 <br>
