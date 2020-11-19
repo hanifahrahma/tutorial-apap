@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Update Hotel</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
+<nav th:replace="fragments/fragment :: navbar(field='Update Hotel')"></nav>
 <h2 th:text="'Hotel dengan id Hotel ' + ${hotel.id} + ' berhasil diupdate.'"></h2>
 <td><a th:href="@{/}">Home</a></td>
 

@@ -1,27 +1,142 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://thymeleaf.org/">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Form Add Kamar</title>-->
+<!--    <object th:include="fragments/fragment :: css" th:remove="tag"></object>-->
+<!--    <object th:include="fragments/fragment :: js" th:remove="tag"></object>-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav th:replace="fragments/fragment :: navbar(field='Form Add Kamar')"></nav>-->
+<!--<h3>Tambah Kamar</h3>-->
+<!--&lt;!&ndash;<form th:action="@{/kamar/add}" th:object="${tempKamar}" method="POST">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <input type="hidden" th:field="*{hotel}"/>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <fieldset>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="submit" id="submitButton" th:value="Save">&ndash;&gt;-->
+<!--&lt;!&ndash;        <table class="table">&ndash;&gt;-->
+<!--&lt;!&ndash;            <thead>&ndash;&gt;-->
+<!--&lt;!&ndash;            <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th>Nama Kamar</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th>Tipe Kamar</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th>Kapasitas Kamar</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th>Aksi</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th></th>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            </thead>&ndash;&gt;-->
+<!--&lt;!&ndash;            <tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;            <tr th:each="kamar, iterationStatus: *{tempKamar}">&ndash;&gt;-->
+<!--&lt;!&ndash;                <td><input th:field="*{kamar[__${iterationStatus.index}__].namaKamar}" /></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <td><input th:field="*{kamar[__${iterationStatus.index}__].namaKamar}" /></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <td><input th:field="*{kamar[__${iterationStatus.index}__].namaKamar}" /></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <td><input th:field="*{kamar[__${iterationStatus.index}__].namaKamar}" /></td>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;        </table>&ndash;&gt;-->
+<!--&lt;!&ndash;    </fieldset>&ndash;&gt;-->
+<!--&lt;!&ndash;        <button type="submit">Submit</button>&ndash;&gt;-->
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
+
+<!--<form th:action="@{/kamar/add}" th:object="${kamar}" method="POST">-->
+<!--    <input type="hidden" th:field="*{hotel}"/>-->
+<!--    Nama Kamar: <br>-->
+<!--    <input type="text" name="namaKamar"/>-->
+<!--    <br>-->
+<!--    Tipe Kamar : <br>-->
+<!--    <select name="tipe">-->
+<!--        <option value="0">Deluxe</option>-->
+<!--        <option value="1">Executive</option>-->
+<!--        <option value="2">President Suite</option>-->
+<!--    </select>-->
+<!--    <br>-->
+<!--    Kapasitas Kamar : <br>-->
+<!--    <input type="number" name="kapasitasKamar"/>-->
+<!--    <br>-->
+<!--    <button type="submit">Submit</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Form Add Kamar</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <!--    <script >-->
+
+    <!--        function addKamar() {-->
+    <!--            $('#add-kamar').append(`-->
+    <!--                    <tr >-->
+    <!--                    <input type="hidden" th:field="*{hotel}"/>-->
+    <!--                    <td><input class="form-control" name="namaKamar"/></td>-->
+
+    <!--                    <td><select class="form-control" name="tipeKamar">-->
+    <!--                        <option value="0">Deluxe</option>-->
+    <!--                        <option value="1">Executive</option>-->
+    <!--                        <option value="2">President Suite</option>-->
+    <!--                    </select></td>-->
+    <!--                    <td><input class="form-control" name="kapasitasKamar"/></td>-->
+    <!--                </tr> '-->
+    <!--                );-->
+
+    <!--            }-->
+    <!--</script>-->
 </head>
 <body>
+<nav th:replace="fragments/fragment :: navbar(field='Form Add Kamar')"></nav>
 <h3>Tambah Kamar</h3>
-<form th:action="@{/kamar/add}" th:object="${kamar}" method="POST">
-    <input type="hidden" th:field="*{hotel}"/>
-    Nama Kamar: <br>
-    <input type="text" name="namaKamar"/>
-    <br>
-    Tipe Kamar : <br>
-    <select name="tipe">
-        <option value="0">Deluxe</option>
-        <option value="1">Executive</option>
-        <option value="2">President Suite</option>
-    </select>
-    <br>
-    Kapasitas Kamar : <br>
-    <input type="number" name="kapasitasKamar"/>
-    <br>
-    <button type="submit">Submit</button>
+<!--<script>-->
+<!--    $('button[name="addItem"]').click(function (event) {-->
+<!--        event.preventDefault();-->
+<!--        var data = $('form').serialize();-->
+<!--        // Add parameter "addItem" to POSTed form data. Button's name and value is-->
+<!--        // POSTed only when clicked. Since "event.preventDefault();" prevents from-->
+<!--        // actual clicking the button, following line will add parameter to form-->
+<!--        // data.-->
+<!--        data += 'addItem';-->
+<!--        $.post('@{/kamar/add/+${idHotel}', data, replaceItems);-->
+<!--    });-->
+<!--</script>-->
+
+<form  th:action="@{/kamar/add}" th:object="${hotel}" method="POST">
+    <input type="hidden" th:field="*{id}"/>
+    <fieldset>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nama Kamar</th>
+                <th>Tipe Kamar</th>
+                <th>Kapasitas Kamar</th>
+                <th><button type="submit" value="Submit" class="btn btn-primary" name="addItem">Tambah</button></th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="temp, itemStat : *{listkamar}">
+<!--                <input type="hidden" th:field="*{listkamar[__${itemStat.index}__].hotel}"/>-->
+                <td><input class="form-control" th:field="*{listkamar[__${itemStat.index}__].namaKamar}" type="text"/></td>
+
+                <td><select class="form-control" th:field="*{listkamar[__${itemStat.index}__].tipe}" >
+                    <option value="0">Deluxe</option>
+                    <option value="1">Executive</option>
+                    <option value="2">President Suite</option>
+                </select></td>
+                <td><input type="number" class="form-control" th:field="*{listkamar[__${itemStat.index}__].kapasitasKamar}" /></td>
+                <td><button type="submit" th:value="${itemStat.index}" class="btn btn-danger"
+                            name="deleteItem">Hapus</button></td>
+            </tr>
+
+            </div>
+            </tbody>
+        </table>
+
+                <input name="save" value="Simpan" type="submit" class="btn btn-sm btn-success"/>
+    </fieldset>
 </form>
+<!--<p th:text="${jumlahKamar}"></p>-->
 </body>
 </html>

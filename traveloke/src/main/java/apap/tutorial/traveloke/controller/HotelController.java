@@ -90,10 +90,10 @@ public class HotelController {
             }
             HotelModel hotel = hotelService.getHotelByIdHotel(idHotel);
             List<KamarModel> listKamar = kamarService.findAllKamarByIdHotel(idHotel);
-            boolean temp = (listKamar.size() != 0);
+            boolean hasKamar = (listKamar.size() != 0);
             model.addAttribute("hotel", hotel);
             model.addAttribute("listKamar", listKamar);
-            model.addAttribute("temp", temp);
+            model.addAttribute("hasKamar", hasKamar);
             return "view-hotel";
         }
         catch (NoSuchElementException noSuchElementException) {
