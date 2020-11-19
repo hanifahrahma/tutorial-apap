@@ -94,11 +94,8 @@ public class HotelRestController {
         return hotelRestService.postStatus();
     }
     @GetMapping(value="/hotel/find")
-    private Mono<String> find(@RequestParam String name){
-        return apiRestService.find(name);
+    private Mono<String> find(@RequestParam String cityName){
+        return apiRestService.find(cityName);
     }
-//    @GetMapping(value = "/full")
-//    private Mono<HotelDetail> postStatus(){
-//        return hotelRestService.postStatus();
-//    }
+
 }
