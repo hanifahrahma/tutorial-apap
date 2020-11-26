@@ -165,6 +165,7 @@ Referensi :
 - [Cascade pada Hibernate](https://agung-setiawan.com/contoh-penggunaan-cascade-pada-hibernate/)
 - [FetchType](https://www.tutorialspoint.com/difference-between-lazy-and-eager-loading-in-hibernate)
 ---
+
 ## Tutorial 4
 ##### 1. Jelaskan perbedaan th:include dan th:replace!
 Sebelumnya dapat diketahui host tag adalah tag yang berisi th:replace, th:include maupun th:insert. Sedangkan fragment tag adalah tag yang berisi th:fragment.
@@ -195,3 +196,41 @@ Sedangkan * akan merujuk pada data yang berada pada object yang sudah didefinisi
 - Kedua saya mencari ide bagaimana fragment dapat diisi sebuah parameter saat dipanggil pada html tiap halaman. Saya menggunakan referensi pada https://anshulgnit.blogspot.com/2018/05/difference-between-thymeleaf-attribute-replace-insert-and-include.html
 - Ketiga saya mengubah fragment.html saya pada fragment tag navbar menjadi dapat menerima parameter sehingga dapat mengganti sesuai halaman tersebut.
 - Kemudian saya mengisi parameter yang sesuai halaman pada tiap title html tersebut di masing - masing html.
+
+---
+
+## Tutorial 5
+---
+##### 1. Apa itu Postman? Apa kegunaannya?
+Postman adalah sebuah aplikasi yang berfungsi sebagai REST Client untuk uji coba REST API. Postman biasa digunakan oleh developer pembuat API sebagai tools untuk menguji API yang telah mereka buat. Pengguna juga diperbolehkan untuk membuat dan menyimpan HTTP request yang dapat dijalankan dan dibaca hasilnya nantinya.
+<br> 
+Postman merupakan tool untuk melakukan proses development API, untuk saat ini sudah banyak fitur-fitur yang sangat membantu dalam proses development API, diantaranya Collection, Environment, response, MockServer, Script Test, Automated Test (Runner)
+<br>
+Referensi : 
+- [Medium : Postman](https://medium.com/@novancimol12/postman-4f181d625fe1) 
+
+##### 2. Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty.
+@JsonIgnoreProperties digunakan dalam class level untuk menandai property atau list dari properties untuk diabaikan. Dengan begitu jika suatu saat ada field baru yang dimasukkan di JSON yang merepresentasikan Model kita, maka Jackson tidak akan throw UnrecognizedPropertyException saat parsing JSON di Java.
+<br>
+@JsonProperty diartikan sebagai logical property yang digunakan di serialization dan deserialization di JSON. saat kita melakukan set JSON data pada Java Object, akan disebut JSON deseralization dan saat kita melakukan get JSON data dari Java Object, disebut JSON serialization. @JsonProperty dapat mengubah visibility dari logical property menggunakan access element saat serialization dan deseralization.
+<br>
+Referensi :
+- [TutorialsPoint : jackson annotation](https://www.tutorialspoint.com/jackson_annotations/jackson_annotations_jsonignoreproperties.htm)
+- [javacodegeeks : jsonignoreproperties](https://www.javacodegeeks.com/2018/01/ignore-unknown-properties-parsing-json-java-jackson-jsonignoreproperties-annotation-example.html )
+- [concretepage : jacksonjsonproperty](https://www.concretepage.com/jackson-api/jackson-jsonproperty-and-jsonalias-example )
+
+##### 3. Apa kegunaan atribut WebClient?
+WebClient class menyediakan method untuk mengirim dan menerima data dari local, intranet, atau internet resource dan diidentifikasi menggunakan URI. WebClient class digunakan webrequest class untuk menyediakan akses ke resource. Instance Webclient dapat mengakses data dari turunan WebRequest apa pun yang terdaftar dengan metode WebRequest.RegisterPrefix. 
+<br>
+Referensi :
+- [Webclient](https://docs.microsoft.com/en-us/dotnet/api/system.net.webclient?view=net-5.0#) 
+
+##### 4. Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?
+ResponseEntity merepresentasikan keseluruhan HTTP response yaitu status code, headers, dan body. Sebagai hasilnya, kita dapat menggunakannya untuk mengkonfigurasi secara lengkap HTTP response.
+<br>
+BindingResult adalah objek Spring yang menyimpan hasil validasi dan binding serta berisi error yang mungkin telah terjadi. BindingResult harus muncul tepat setelah objek model yang divalidasi atau Spring akan gagal untuk memvalidasi objek dan mengeluarkan Exception. Dengan kata lain Binding result digunakan sebagai argumen untuk metode validasi dari Validator di dalam Controller. 
+<br>
+Referensi :
+- [baeldung: spring-response-entity](https://www.baeldung.com/spring-response-entity)
+- [stackoverflow : bindingresult](https://stackoverflow.com/questions/10413886/what-is-the-use-of-bindingresult-interface-in-spring-mvc/10427459 )
+- [codetutr](https://web.archive.org/web/20161120115428/http://codetutr.com/2013/05/28/spring-mvc-form-validation/) 
