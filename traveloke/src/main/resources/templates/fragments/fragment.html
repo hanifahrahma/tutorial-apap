@@ -29,7 +29,15 @@
     <div class="navbar-text">
         <span th:text="${field}"></span>
     </div>
+    <div class="navbar-nav pull-right">
+        <a class="nav-item nav-link active" th:href="@{/changePassword}">updatepass</a>
+    </div>
+    <div class="navbar-nav pull-right">
+        <a class="nav-item nav-link active" th:href="@{/logout}">Logout</a>
+    </div>
 </nav>
+
+
 
 </body>
 </html>
