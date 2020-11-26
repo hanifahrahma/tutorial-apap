@@ -17,9 +17,17 @@ public class UserController {
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     public String addUserSubmit(@ModelAttribute UserModel userModel, Model model){
-        userService.addUser(userModel);
+        String msg;
+        if(!userService.checkPass(userModel.getPassword())){
+            msg = "Password harus berisi angka dan huruf serta minimal memiliki 8 karakter";
+        }
+        else {
+            userService.addUser(userModel);
+        }
+        msg = "User berhasil ditambah";
         model.addAttribute("user", userModel);
-        return "redirect:/";
+        model.addAttribute("msg", msg);
+        return "hasil-update";
 
     }
 
@@ -40,6 +48,9 @@ public class UserController {
         }
         else if(isUpdated.equals("FALSE2")){
             msg = "Password baru anda tidak sama.";
+        }
+        else if (isUpdated.equals("FALSE3")){
+            msg = "Password harus berisi angka dan huruf serta minimal memiliki 8 karakter";
         }
         else {
             msg = "";

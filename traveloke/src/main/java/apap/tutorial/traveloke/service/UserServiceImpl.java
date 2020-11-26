@@ -13,6 +13,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserModel addUser(UserModel user) {
+
         String pass = encrypt(user.getPassword());
         user.setPassword(pass);
         return userDb.save(user);
@@ -26,6 +27,14 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public boolean checkPass(String pass) {
+        boolean checkLength = pass.length() >= 8;
+        boolean checkAlfabet = pass.matches(".*[a-zA-Z]+.*");
+        boolean checkNumbering = pass.matches(".*[0-9]+.*");
+        return checkAlfabet && checkLength && checkNumbering;
+    }
+
+    @Override
     public String changePassword(UserModel user, String passlama, String passbaru, String passbaru2) {
         String msg;
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -33,10 +42,14 @@ public class UserServiceImpl implements UserService{
         if(passwordEncoder.matches(passlama, user.getPassword())){
             System.out.println("masuk 1");
             if (passbaru.equals(passbaru2)){
-                System.out.println("masuk 2");
-                msg = "OKAY";
-                user.setPassword(passbaru);
-                addUser(user);
+                if (checkPass(passbaru)) {
+                    msg = "OKAY";
+                    user.setPassword(passbaru);
+                    addUser(user);
+                }
+                else {
+                    msg = "FALSE3";
+                }
             }
             else{
                 System.out.println("masuk 3");
