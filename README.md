@@ -234,3 +234,34 @@ Referensi :
 - [baeldung: spring-response-entity](https://www.baeldung.com/spring-response-entity)
 - [stackoverflow : bindingresult](https://stackoverflow.com/questions/10413886/what-is-the-use-of-bindingresult-interface-in-spring-mvc/10427459 )
 - [codetutr](https://web.archive.org/web/20161120115428/http://codetutr.com/2013/05/28/spring-mvc-form-validation/) 
+
+---
+
+ Tutorial 6 
+---
+#####1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?
+Otentikasi adalah verifikasi apakah seseorang itu adalah orang yang berhak. Contoh penerapan otentikasi pada tutorial ini adalah pada saat melakukan login.
+<br>
+Sedangkan Otorisasi adalah pencarian apakah orang yang sudah diidentifikasi (diotentikasi), diijinkan untuk memanipulasi sumber daya tertentu.Contoh otentikasi pada tutorial ini adalah menerapkan 
+<br>.antMatchers("/hotel/**").hasAuthority("RECEPTIONIST")<br>
+Yaitu yang dapat mengakses url yang diawali dengan /hotel/ hanya dapat diakses oleh RECEPTIONIST.
+
+Referensi : 
+- [yiiframework](https://www.yiiframework.com/doc/guide/1.1/id/topics.auth) 
+
+#####2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.
+BCryptPasswordEncoder adalah class yang mengimplementasi PasswordEncoder dan menyediakan password hashing. Tidak mungkin untuk melakukan register password dengan plaintext, maka dari itu hashing menjadi kewajiban dalam menyimpan password. Sehingga cara kerja BCryptPasswordEncoder adalah dengan menyimpan password dengan cara dilakukan hashing terlebih dahulu.
+
+Referensi : 
+- [PasswordHashing](https://terasolunaorg.github.io/guideline/1.0.x/en/Security/PasswordHashing.html) 
+
+#####3. Jelaskan secara singkat apa itu UUID beserta penggunaannya!
+UUID adalah kumpulan 32 karakter (String) yang dibuat secara acak (random) dengan teknik khusus yang dijamin unik untuk setiap data. Kegunaan UUID adalah sebagai primary key dari model tersebut. Walaupun UUID begitu lambat, UUID lebih mudah digunakan di sistem terdistribusi, saat semua endpoint bisa membuat data baru, sangat susah untuk mempunyai data yang tersinkronisasi dengan baik. Pada tutorial kali ini kita menggunakan UUID pada user sebagai primary keynya.
+
+Referensi :  [UUID](https://id-laravel.com/post/menggunakan-uuid-di-php-laravel/) 
+
+#####4. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut padahal kita sudah memiliki class UserRoleServiceImpl.java?  
+Hal ini dikarenakan fungsi dari UserDetailsServiceImpl.java berbeda dengan UserRoleServiceImpl.java. UserDetailsServiceImpl.java melakukan implements interface UserDetailsService dimana telah diberikan oleh springboot untuk digunakan dalam mendapatkan user-related data. UserDetailsServiceImpl.java juga melakukan override method loadUserByUsername() yang berfungsi untuk mengkostumisasi proses dalam pencarian user. 
+
+Referensi : 
+- [Baeldung - Spring Security](https://www.baeldung.com/spring-security-authentication-with-a-database) 

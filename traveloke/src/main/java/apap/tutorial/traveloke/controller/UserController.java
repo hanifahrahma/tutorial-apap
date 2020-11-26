@@ -22,9 +22,9 @@ public class UserController {
             msg = "Password harus berisi angka dan huruf serta minimal memiliki 8 karakter";
         }
         else {
+            msg = "User berhasil ditambah";
             userService.addUser(userModel);
         }
-        msg = "User berhasil ditambah";
         model.addAttribute("user", userModel);
         model.addAttribute("msg", msg);
         return "hasil-update";
