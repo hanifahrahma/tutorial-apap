@@ -43,9 +43,14 @@ public class UserServiceImpl implements UserService{
             System.out.println("masuk 1");
             if (passbaru.equals(passbaru2)){
                 if (checkPass(passbaru)) {
-                    msg = "OKAY";
-                    user.setPassword(passbaru);
-                    addUser(user);
+                    if(!passbaru.equals(passlama)) {
+                        msg = "OKAY";
+                        user.setPassword(passbaru);
+                        addUser(user);
+                    }
+                    else{
+                        msg = "SAMA";
+                    }
                 }
                 else {
                     msg = "FALSE3";

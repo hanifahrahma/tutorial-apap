@@ -52,6 +52,9 @@ public class UserController {
         else if (isUpdated.equals("FALSE3")){
             msg = "Password harus berisi angka dan huruf serta minimal memiliki 8 karakter";
         }
+        else if(isUpdated.equals("SAMA")){
+            msg = "Password lama dan baru sama";
+        }
         else {
             msg = "";
         }
