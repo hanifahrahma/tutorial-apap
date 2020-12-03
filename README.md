@@ -265,3 +265,60 @@ Hal ini dikarenakan fungsi dari UserDetailsServiceImpl.java berbeda dengan UserR
 
 Referensi : 
 - [Baeldung - Spring Security](https://www.baeldung.com/spring-security-authentication-with-a-database) 
+
+---
+
+ Tutorial 7 
+---
+##### 1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan ​screenshot sebagai ilustrasi dari apa yang Anda jelaskan.
+- Untuk latihan nomor 1, saya menghilangkan checkbox dengan cara pada index.js item type="checkbox" saya hilangkan. hal ini saya lakukan karena untuk satu card item berada di button dengan function onClick sehingga tanpa checkbox sudah dapat menghandle hal tersebut.
+![alt text](Image/foto-tutorial-7/1.1.jpg?raw=true)
+Hasilnya sebagai berikut :
+![alt text](Image/foto-tutorial-7/1.jpg?raw=true)
+
+- Untuk latihan nomor 2, saya melakukannya dengan menggunakan state yaitu isFavItems, jika true maka button akan dihide, dan jika false akan dimunculkan. Saya juga melakukan pengubahan state setiap melakukan pengurangan items pada list fav items. Berikut kodingan saya :
+![alt text](Image/foto-tutorial-7/2.jpg?raw=true)
+![alt text](Image/foto-tutorial-7/2.2.jpg?raw=true)
+![alt text](Image/foto-tutorial-7/2.1.jpg?raw=true)
+
+- untuk latihan nomor 3, saya memisahkan function untuk melakukan penambahan dan pengurangan di listitems fav. Berikut hasil kodingan saya :
+![alt text](Image/foto-tutorial-7/4.jpg?raw=true)
+saya melakukan hal diatas, dengan mengganti if else nya. Untuk Handleclickplus saya hanya membutuhkan push untuk menambahkan ke array sedangkan untuk handleClikMinus saya hanya membutuhkan untuk pengurangan. Sekaligus untuk menghandle nomor 2 saya juga melakukan setting state isFavItems, jika ditambahkan fav items nya akan selalu false, namun jika minus dan isi favItems nya sudah 0 maka akan dibuat true sehingga button akan terhide.
+
+- Untuk latihan nomor 4, saya menggunakan toggle dengan bantuan class favIcon. Saya harus menambahkan link di index.html juga. Selain itu saya melakukan pergantian class dengan cara memanfaatkan state isOnToggle. Yaitu sebagai berikut :
+![alt text](Image/foto-tutorial-7/3.jpg?raw=true)
+Lalu untuk membaca toggle nya saya tampilkan sebagai berikut sehingga class dapat berubah sesuai yang saya jelaskan diatas :
+![alt text](Image/foto-tutorial-7/3.2.jpg?raw=true)
+Kemudian untuk menghandle show favorite saya dengan cara jika isToggleOn adalah true maka akan isi yang ada di id=fav dimana isinya adalah list movies favorite akan dimunculkan, jika false berarti tidak. Handle kodingannya saya lakukan sebagai berikut :
+![alt text](Image/foto-tutorial-7/3.1.jpg?raw=true)
+
+- Untuk nomor 5, saya membuat komponen baru sebagai berikut :
+![alt text](Image/foto-tutorial-7/5.jpg?raw=true)
+saya menggunakan component EmptyState membutuhkan props yaitu panjang favitems sehingga pada app.js maupun appfunc.js saya memanggilnya dengan cara sebagai berikut :
+![alt text](Image/foto-tutorial-7/5.1.jpg?raw=true)
+Sehingga pada component EmptyState dengan props empty akan selalu melakukan pengecekkan jika false akan menampilkan tulisan bahwa tidak ada favlistitems.  
+
+
+##### 2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara ​state​ dan ​props​?
+Prop adalah singkatan dari Property.  Masukan dari sebuah komponen disebut prop. Nilai prop dipassing layaknya attribut HTML. Nilai tersebut bersifat read-only (hanya bisa dibaca/digunakan, tidak boleh diubah dari dalam). Oleh karena itu, biasanya props digunakan untuk berkomunikasi antar component. 
+<br>
+Sedangkan, state adalah data private sebuah component. Data ini hanya tersedia untuk component tersebut dan tidak bisa di akses dari component lain.Berbeda dengan props yang valuenya dilempar dari component lain, state justru dapat menyimpan dan mengubah datanya sendiri dari dalam.
+Salah satu contohnya yaitu state favitems pada App.js, variable tersebut hanya dapat dibaca pada App.js, namun saat dijadikan parameter saat menggunakan List, List akan dapat membacanya dan menampilkannya dalam bentuk html.
+Referensi : 
+- [MahirKoding](https://www.mahirkoding.com/tutorial-react-perbedaan-state-dan-props/) 
+- [Medium-Prop State](https://medium.com/coderupa/react-prop-state-apa-bedanya-7ee61df8257f) 
+
+##### 3. Apa keuntungan menggunakan ​component ​(e.g. List, Item) di React? Berikan contohnya!
+Keuntungan utama dari penggunaan tersebut adalah, kita tidak perlu mengulang code html yang sama berkali - kali sehingga hasil kodingan akan lebih bersih. Contohnya adalah penggunaan List yang terdapat List Movies dan juga List favorite Movies. Dengan menggunakan komponen List, kita dapat hanya tinggal memanggil komponen tersebut dan mengisi sesuai props yang dibutuhkan. Contoh lainnya adalah pada item, dengan bantuan map juga kita dapat tinggal menggunakan komponen item pada komponen List.
+
+##### 4. Menurut kamu, apa saja kelebihan menggunakan React dalam pengembangan web?
+Kelebihan menggunakan react dalam pengembangan web adalah membuat aplikasi web yang dinamis menjadi lebih mudah karena menggunakan component, komponen yang dapat digunakan kembali juga menjadi kelebihan dari react, proses rendering juga lebih cepat,  perubahan kecil yang terjadi dalam struktur child tidak akan mempengaruhi struktur parent  nya karena ReactJS hanya menggunakan aliran data ke bawah, dan ReactJs menawarkan pustaka JavaScript yang sangat kaya. 
+Referensi : 
+- [TechFor-Keuntungan React Js](https://www.techfor.id/10-keuntungan-menggunakan-react-js-pada-desain-website/) 
+- [Konsepkoding - Pengenalan ReactJs](https://www.konsepkoding.com/2020/08/1-pengenalan-reactjs-kekurangan-dan.html) 
+
+##### 5. Menurut kamu, apa saja kekurangan menggunakan React dalam pengembangan web?
+Kekurangan React adalah react memiliki dokumentasi yang buruk, ReactJS menggunakan JSX. Ini adalah ekstensi sintaks yang memungkinkan HTML dengan JavaScript dicampur bersama dan Browser pada versi lama tidak mendukung untuk ReactJS, hanya boleh menggunakan Browser versi baru.
+Referensi : 
+- [Konsepkoding - Pengenalan ReactJs](https://www.konsepkoding.com/2020/08/1-pengenalan-reactjs-kekurangan-dan.html) 
+

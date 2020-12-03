@@ -49,18 +49,19 @@ export default class App extends React.Component {
           
         <div className="col-sm-6">
         
-        <div id="btn-toggle text-center ml-3" onClick={this.handleClick} className={toggleName} style={{fontSize: 40, marginLeft: 600}}>
-        {/* { this.state.isToggleOn ? 'ON' : 'OFF'} */}
-        
+        <div id="btn-toggle text-center ml-3" onClick={this.handleClick} className={toggleName}
+         style={{fontSize: 40, marginLeft: 600}}>
         </div>
         </div>
         <div className="col-sm-2">
-        <p className="text-center text-secondary text-sm" style={{marginRight: 80, marginTop: 8}}>Hide Favorites</p>
+        <p className="text-center text-secondary text-sm" style={{marginRight: 80, marginTop: 8}}>
+          Hide Favorites</p>
         </div>
         </div>
 
         <div className="row">
-          <button hidden={this.state.isFavItems} className="btn btn-primary" onClick={this.handleDeleteFav} style={{marginLeft: 600}}>Delete All Favorites</button>
+          <button hidden={this.state.isFavItems} className="btn btn-primary" 
+          onClick={this.handleDeleteFav} style={{marginLeft: 600}}>Delete All Favorites</button>
         </div>
         <div className="container pt-3">
         
@@ -107,6 +108,7 @@ export default class App extends React.Component {
 
     // trigger set state
     this.setState({ favItems: newItems, isFavItems:false});
+    
     // if(this.state.favItems.length > 0)  { document.getElementById("hapus").innerHTML = "<button className='btn' this.handleDeleteFav = {this.state.favItems} >Delete All Fav</button>";    }
   }
 
@@ -118,12 +120,14 @@ export default class App extends React.Component {
 
 
     newItems.splice(targetInd, 1); //delete 1 item at index target 
-    console.log(this.state.favItems.length)
+    // console.log(this.state.favItems.length)
     if(this.state.favItems.length > 1) {
       this.setState({ favItems: newItems, isFavItems:false});
     } else{
-      this.setState({ favItems: newItems, isFavItems:true});
+      this.setState(
+        { favItems: newItems, isFavItems:true});
     }
+    // console.log(this.state.isFavItems)
     // if(this.state.favItems.length > 0)  { document.getElementById("hapus").innerHTML = "<button className='btn' this.handleDeleteFav = {this.state.favItems} >Delete All Fav</button>";    }
   }
 
