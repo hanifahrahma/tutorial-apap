@@ -46,6 +46,7 @@ export default class App extends React.Component {
           (This is a <strong>class-based</strong> application)
         </p>
         <div className="row">
+          
         <div className="col-sm-6">
         
         <div id="btn-toggle text-center ml-3" onClick={this.handleClick} className={toggleName} style={{fontSize: 40, marginLeft: 600}}>
@@ -54,7 +55,7 @@ export default class App extends React.Component {
         </div>
         </div>
         <div className="col-sm-2">
-        <p className="text-center text-secondary text-sm" style={{marginRight: 80, marginTop: 8}}>Show Favorites</p>
+        <p className="text-center text-secondary text-sm" style={{marginRight: 80, marginTop: 8}}>Hide Favorites</p>
         </div>
         </div>
 
@@ -88,7 +89,6 @@ export default class App extends React.Component {
   }
   handleClick =  () => {
     var x = document.getElementById("fav");
-    var y = document.getElementById("btn-toggle");
     if(this.state.isToggleOn){
       x.style.display = "none";
     }else{

@@ -17,7 +17,10 @@ function App() {
 // below is the return value of useState
 // [favItems, setFavItems] = [state, setState]
  const [favItems, setFavItems] = useState(() => []);
-//  const [isToggle, setToggle] = useState(true);
+ const [isToggle, setToggle] = useState(true);
+ const [btnFav, setBtnFav] = useState(true);
+ const [classBtn, setClassBtn] = useState("fa fa-toggle-off");
+ 
  
  function handleItemPlus(item) {
     // immutability
@@ -28,6 +31,7 @@ function App() {
     if (targetInd < 0) newItems.push(newItem);
     // trigger to set a new state
     setFavItems(newItems);
+    setBtnFav(false);
  }
  function handleItemMinus(item) {
     // immutability
@@ -37,30 +41,49 @@ function App() {
     const targetInd = newItems.findIndex(it => it.id === newItem.id);
     newItems.splice(targetInd, 1); // delete 1 item at index targetInd
     // trigger to set a new state
-    setFavItems(newItems);
+    
+    if(favItems.length > 1){
+        setFavItems(newItems);   
+    }else{
+        setFavItems(newItems);  
+        setBtnFav(true);
+    }
  }
-// const toggleName = () => {
-//     isToggleOn ? "fa fa-toggle-off" : "fa fa-toggle-on" };
+ function handleClickToggle() {
+    var x = document.getElementById("fav2");
+    if(isToggle){
+      x.style.display = "none";
+      setClassBtn("fa fa-toggle-on")
+    }else{
+      x.style.display = "block";
+      setClassBtn("fa fa-toggle-off")
+    }
+    setToggle(!isToggle);
+    // console.log(isToggle)
+  }
 
-// function handleClick() {
-//         var x = document.getElementById("fav");
-//         // var y = document.getElementById("btn-toggle");
-//         const isTog = isToggle;
-//         if(isToggle){
-//           x.style.display = "none";
-//         }else{
-//           x.style.display = "block";
-//         }
-//         setToggle({ isToggle: !isTog});
-//       }
-//  const toggleName = this.getToggleName();
+  function handleClearFav() {
+    setFavItems([]);
+    setBtnFav(true);
+}
  return (
     <div className="container-fluid">
         <h1 className="text-center mt-3 mb-0">Favorites Movie App</h1>
         <p className="text-center text-secondary text-sm font-italic">
         (This is a <strong>function-based</strong> application)
         </p>
-        
+        <div className="row">
+        <div className="col-sm-6">
+        <div id="btn-toggle text-center ml-3" onClick={handleClickToggle} className={classBtn} style={{fontSize: 40, marginLeft: 600}}>
+        </div>
+        </div>
+        <div className="col-sm-2">
+        <p className="text-center text-secondary text-sm" style={{marginRight: 80, marginTop: 8}}>Hide Favorites</p>
+        </div>
+        </div>
+        <div className="row">
+          <button hidden={btnFav} className="btn btn-primary" onClick={handleClearFav} style={{marginLeft: 600}}>Delete All Favorites</button>
+        </div>
         <div className="container pt-3">
             <div className="row">
                 <div className="col-sm">
@@ -70,7 +93,7 @@ function App() {
                 onItemClick={handleItemPlus}
                 />
                 </div>
-                <div className="col-sm">
+                <div className="col-sm" id="fav2">
                 <List
                 title="My Favorites"
                 items={favItems}
