@@ -56,7 +56,13 @@
             <button type="submit" class="btn btn-sm btn-danger">Hapus yang dipilih</button>
         </form>
     </div>
+    <span th:with="role=${temp.seeRole(#httpServletRequest.userPrincipal.name)}">
+        <span class="row" th:if="${#strings.equals(role, 'RECEPTIONIST')}">>
+
     <td><a th:href="@{/kamar/add/}+${hotel.id}">Add Kamar</a></td>
+        </span>
+    </span>
+
 </section>
 <td><a th:href="@{/}">Home</a></td>
 </body>
