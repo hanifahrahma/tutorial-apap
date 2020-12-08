@@ -27,28 +27,66 @@ import EmptyState from 'components/EmptyState';
 //   );
 // }
 
+const Wrapper = Component =>
+  function Comp(props) {
+    React.useEffect(() => {
+      localStorage.setItem("dark", JSON.stringify(this.props));
+    }, [this.state.isDark]);
+    return <Component {...props} />;
+  };
+
+function getDarkStorage(){
+  const dark = JSON.parse(localStorage.getItem("dark"))
+  return dark || false;
+  // return localStorage.getItem('dark') || false
+}
+
+// const useStateWithLocalStorage = localStorageKey => {
+//   const [value, setValue] = React.useState(
+//     localStorage.getItem(localStorageKey) || false
+//   );
+//   React.useEffect(() => {
+//     localStorage.setItem(localStorageKey, value);
+//   }, [value]);
+// }
+
 export default class App extends React.Component {
   state = {
     favItems: [],
     isToggleOn: true,
-    isFavItems : true
+    isFavItems : true,
+    isDark : getDarkStorage()
   };
   
+  
   getToggleName  = () => this.state.isToggleOn ? "fa fa-toggle-off" : "fa fa-toggle-on"
+  getToggleDark  = () => this.state.isDark ? "fa fa-toggle-off" : "fa fa-toggle-on"
+  
   render() {
     const { favItems } = this.state;
     const toggleName = this.getToggleName();
+    const toggleDark = this.getToggleDark();
+    const styleDark = {
+      backgroundColor : "black", 
+      color: "white"
+    }
+    const styleLight = {
+      backgroundColor : "white", 
+      color: "black"
+    }
+
+    
     
     return (
-      <div className="container-fluid">
+      <body style={this.state.isDark ? styleLight : styleDark}>
+      <Wrapper props={this.state.isDark} />
+      <div className="container-fluid" >
         <h1 className="text-center mt-3 mb-0">Favorites Movie App</h1>
         <p className="text-center text-secondary text-sm font-italic">
           (This is a <strong>class-based</strong> application)
         </p>
         <div className="row">
-          
         <div className="col-sm-6">
-        
         <div id="btn-toggle text-center ml-3" onClick={this.handleClick} className={toggleName}
          style={{fontSize: 40, marginLeft: 600}}>
         </div>
@@ -58,6 +96,20 @@ export default class App extends React.Component {
           Hide Favorites</p>
         </div>
         </div>
+
+        <div className="row">
+        <div className="col-sm-6">
+        <div id="btn-toggle text-center ml-3" onClick={this.handleDark} className={toggleDark}
+         style={{fontSize: 40, marginLeft: 600}}>
+        </div>
+        </div>
+        <div className="col-sm-2">
+        <p className="text-center text-secondary text-sm" style={{marginRight: 80, marginTop: 8}}>
+          Dark Mode</p>
+        </div>
+        </div>
+
+        
 
         <div className="row">
           <button hidden={this.state.isFavItems} className="btn btn-primary" 
@@ -86,6 +138,7 @@ export default class App extends React.Component {
           </div>
         </div>
       </div>
+      </body>
     );
   }
   handleClick =  () => {
@@ -96,6 +149,11 @@ export default class App extends React.Component {
       x.style.display = "block";
     }
     this.setState({ isToggleOn: !this.state.isToggleOn});
+  }
+
+  handleDark=  () => {
+    this.setState({ isDark: !this.state.isDark});
+    localStorage.setItem("dark", JSON.stringify(!this.state.isDark));
   }
 
   handleItemPlus = (item) => {
