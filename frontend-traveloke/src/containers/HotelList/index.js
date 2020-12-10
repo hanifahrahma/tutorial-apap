@@ -19,7 +19,9 @@ class HotelList extends Component {
             isEdit: false,
             keyword: "",
             hotelsDefault : [],
-            currentPage: 1
+            currentPage: 1,
+            todosPerPage: 5,
+            hotelsPage: []
         };
         this.handleAddHotel = this.handleAddHotel.bind(this)
         this.handleCancel = this.handleCancel.bind(this)
@@ -30,6 +32,7 @@ class HotelList extends Component {
         this.handleDeleteHotel = this.handleDeleteHotel.bind(this)
         this.handleEditHotel = this.handleEditHotel.bind(this)
         this.updateSearch = this.updateSearch.bind(this)
+        this.handleClick = this.handleClick.bind(this)
         // this.handleClickLoading = this.handleClickLoading.bind(this)
     }
     componentDidMount(){
@@ -46,6 +49,11 @@ class HotelList extends Component {
             console.log(error);
         }
     }
+    handleClick(event) {
+        this.setState({
+          currentPage: Number(event.target.id)
+        });
+      }
     // async loadKamar(idHotel) {
     //     try {
     //         const { data } = await APIConfig.get(`/hotel/${idHotel}`);
@@ -141,6 +149,14 @@ class HotelList extends Component {
     // }
     render(){
         const BarStyling = {width:"20rem",background:"#F2F1F9", border:"none", padding:"0.5rem"};
+        const indexOfLastTodo = this.state.currentPage * this.state.todosPerPage;
+        const indexOfFirstTodo = indexOfLastTodo - this.state.todosPerPage;
+        const currentTodos = this.state.hotelsDefault.slice(indexOfFirstTodo, indexOfLastTodo);
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(this.state.hotels.length / this.state.todosPerPage); i++) {
+          pageNumbers.push(i);
+        }
+        
         // console.log("render()")
         return(
             <div className={classes.hotelList}>
@@ -157,18 +173,7 @@ class HotelList extends Component {
                 onChange={this.updateSearch}
                 />
                 <div>
-                {this.state.keyword === "" ? this.state.hotels.map((hotel) => (
-                    <Hotel
-                    key={hotel.id}
-                    id={hotel.id}
-                    namaHotel={hotel.namaHotel}
-                    alamat={hotel.alamat}
-                    nomorTelepon={hotel.nomorTelepon}
-                    handleEdit={() => this.handleEditHotel(hotel)}
-                    handleDelete={() => this.handleDeleteHotel(hotel.id)}
-                    listKamar={hotel.listkamar}
-                    />
-                )) : this.state.hotelsDefault.map((hotel) => (
+                {currentTodos.map((hotel) => (
                     <Hotel
                     key={hotel.id}
                     id={hotel.id}
@@ -180,6 +185,21 @@ class HotelList extends Component {
                     listKamar={hotel.listkamar}
                     />
                 ))}
+                </div>
+                <div className={classes.page}>
+                <ul className={classes.pagenumbers}>
+                {pageNumbers.map(number => {
+                        return (
+                        <li
+                            key={number}
+                            id={number}
+                            onClick={this.handleClick}
+                        >
+                            {number}
+                        </li>
+                        );
+                    })}
+                </ul>
                 </div>
                 <Modal show={this.state.isCreate || this.state.isEdit} handleCloseModal={this.handleCancel}>
                 <form>
