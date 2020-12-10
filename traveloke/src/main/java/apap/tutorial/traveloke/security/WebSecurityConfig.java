@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
 
 @Configuration
 @EnableWebSecurity
@@ -19,19 +20,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/css/**").permitAll()
-                .antMatchers("/js/**").permitAll()
-                .antMatchers("/hotel/**").hasAuthority("RECEPTIONIST")
-                .antMatchers("/kamar/add/**").hasAuthority("RECEPTIONIST")
-                .antMatchers("/user/addUser").hasAuthority("ADMIN")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login").permitAll()
-                .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login").permitAll();
+//                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()).and()
+//                .authorizeRequests()
+//                .antMatchers("/css/**").permitAll()
+//                .antMatchers("/js/**").permitAll()
+//                .antMatchers("/api/v1/**").permitAll()
+//                .antMatchers("/hotel/**").hasAuthority("RECEPTIONIST")
+//                .antMatchers("/kamar/add/**").hasAuthority("RECEPTIONIST")
+//                .antMatchers("/user/addUser").hasAuthority("ADMIN")
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login").permitAll()
+//                .and()
+//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//                .logoutSuccessUrl("/login").permitAll();
+                .authorizeRequests().antMatchers("/css/**").permitAll().antMatchers("/js/**").permitAll()
+                .antMatchers("/api/v1/**").permitAll().antMatchers("/hotel/**").hasAuthority("RECEPTIONIST")
+                .antMatchers("/user/addUser").hasAuthority("ADMIN").antMatchers("/kamar/addbanyak")
+                .hasAuthority("RECEPTIONIST").anyRequest().authenticated().and().formLogin().loginPage("/login")
+                .permitAll().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login").permitAll().and().cors().and().csrf().disable();
+
     }
 
 
@@ -53,4 +63,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
     }
+
 }

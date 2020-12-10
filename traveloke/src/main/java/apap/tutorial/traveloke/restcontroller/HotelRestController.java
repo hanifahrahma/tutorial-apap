@@ -1,9 +1,11 @@
 package apap.tutorial.traveloke.restcontroller;
 
 import apap.tutorial.traveloke.model.HotelModel;
+import apap.tutorial.traveloke.model.KamarModel;
 import apap.tutorial.traveloke.rest.HotelDetail;
 import apap.tutorial.traveloke.service.APIRestService;
 import apap.tutorial.traveloke.service.HotelRestService;
+import apap.tutorial.traveloke.service.KamarRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/v1")
 public class HotelRestController {
     @Autowired
@@ -25,12 +28,16 @@ public class HotelRestController {
     @Autowired
     private APIRestService apiRestService;
 
+//    @Autowired
+//    private KamarRestService kamarRestService;
+
     @PostMapping(value="/hotel")
     private HotelModel createHotel(@Valid @RequestBody HotelModel hotel, BindingResult bindingResult){
         if(bindingResult.hasFieldErrors()){
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "Request body has invalid type or missing field"
             );
+
         }
         else{
             return hotelRestService.createHotel(hotel);
@@ -82,6 +89,11 @@ public class HotelRestController {
     private List<HotelModel> retrieveListHotel(){
         return hotelRestService.retrieveListHotel();
     }
+
+//    @GetMapping(value="hotel/view/{idHotel}")
+//    private List<KamarModel> retrieveListKamar(@PathVariable("idHotel") Long idHotel){
+//        return kamarRestService.getKamarByIdHotel(idHotel);
+//    }
 
     @GetMapping(value = "/hotel/{idHotel}/status")
     private Mono<String> getStatus(@PathVariable Long idHotel){

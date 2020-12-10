@@ -54,4 +54,9 @@ public class KamarRestServiceImpl implements KamarRestService{
         KamarModel kamar = kamarDb.findBynoKamar(idKamar).get();
         kamarDb.delete(kamar);
     }
+
+    @Override
+    public List<KamarModel> getKamarByIdHotel(Long idKamar) {
+        return kamarDb.findByHotelId(idKamar);
+    }
 }
