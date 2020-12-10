@@ -17,7 +17,9 @@ class HotelList extends Component {
             alamat: "",
             nomorTelepon: "",
             isEdit: false,
-            keyword: ""
+            keyword: "",
+            hotelsDefault : [],
+            currentPage: 1
         };
         this.handleAddHotel = this.handleAddHotel.bind(this)
         this.handleCancel = this.handleCancel.bind(this)
@@ -27,6 +29,7 @@ class HotelList extends Component {
         this.handleSubmitEditHotel = this.handleSubmitEditHotel.bind(this)
         this.handleDeleteHotel = this.handleDeleteHotel.bind(this)
         this.handleEditHotel = this.handleEditHotel.bind(this)
+        this.updateSearch = this.updateSearch.bind(this)
         // this.handleClickLoading = this.handleClickLoading.bind(this)
     }
     componentDidMount(){
@@ -120,16 +123,12 @@ class HotelList extends Component {
         console.log(error);
         }
     }
-    async updateSearch() {
-        console.log("masuk")
-        // this.setState({keyword: e.target.value})
-        const hotelFiltered =this.state.hotels.filter(hotel => {
-         return hotel.namaHotel.toLowerCase().includes(this.state.keyword.toLowerCase())
-        })
-        this.setState({hotels: hotelFiltered})
-        return this.state.hotels
+    async updateSearch(e) {
+        console.log(e.target.value)
+        this.setState({keyword: e.target.value})
+        const hotelFiltered = this.state.hotels.filter(hotel =>  hotel.namaHotel.toLowerCase().includes(e.target.value.toLowerCase()))
+        this.setState({hotelsDefault: hotelFiltered})
     }
-     
     
     
     // shouldComponentUpdate(nextProps, nextState){
@@ -158,7 +157,18 @@ class HotelList extends Component {
                 onChange={this.updateSearch}
                 />
                 <div>
-                {this.state.hotels.map((hotel) => (
+                {this.state.keyword === "" ? this.state.hotels.map((hotel) => (
+                    <Hotel
+                    key={hotel.id}
+                    id={hotel.id}
+                    namaHotel={hotel.namaHotel}
+                    alamat={hotel.alamat}
+                    nomorTelepon={hotel.nomorTelepon}
+                    handleEdit={() => this.handleEditHotel(hotel)}
+                    handleDelete={() => this.handleDeleteHotel(hotel.id)}
+                    listKamar={hotel.listkamar}
+                    />
+                )) : this.state.hotelsDefault.map((hotel) => (
                     <Hotel
                     key={hotel.id}
                     id={hotel.id}
