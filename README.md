@@ -322,3 +322,45 @@ Kekurangan React adalah react memiliki dokumentasi yang buruk, ReactJS menggunak
 Referensi : 
 - [Konsepkoding - Pengenalan ReactJs](https://www.konsepkoding.com/2020/08/1-pengenalan-reactjs-kekurangan-dan.html) 
 
+---
+
+ Tutorial 8 
+---
+##### 1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian melakukan langkah - langkah tersebut? 
+Saya melakukan pergantian state untuk nomorTelepon, namaHotel, alamat menjadi string kosong (“”) setelah hotel baru berhasil terbentuk. Oleh karena itu saya mengubahnya di function handleAddHotel(). Function tersebut akan dipanggil setiap tombol “Add Hotel” dipencet, oleh karena itu saya meletakkan pergantian state di function tersebut agar setiap tombol dipencet state akan berubah menjadi kosong.  
+
+##### 2. Jelaskan fungsi dari async dan await! 
+async - await sendiri adalah suatu cara atau teknik untuk membuat kode promise mudah dibaca seperti kode synchronous pada umumnya. Jika menggunakan kata kunci async sebelum definisi fungsi, maka kita dapat menggunakan await di dalam fungsi tersebut. Async function akan selalu mengembalikan promise. Ketika await suatu promise, fungsi tersebut dihentikan sementara dengan cara tidak memblokir sampai promise selesai dan akan melanjutkannya setelah data terpenuhi. Terdapat 3 state pada promise yaitu pending, resolved, dan rejected. Jika promise itu terpenuhi, maka akan mendapatkan kembali nilai tersebut. Jika promise ditolak, nilai yang ditolak akan dibuang. 
+<br>
+Referensi : 
+- [SutanLab - Promise & Aysnc](https://sutanlab.id/blog/memahami-konsep-promise-di-javascript#async---await) 
+- [Developer google - Async Function](https://developers.google.com/web/fundamentals/primers/async-functions?hl=id)
+- [Scotch - asynchronous javascript using async await](https://scotch.io/tutorials/asynchronous-javascript-using-async-await) 
+
+
+##### 3. Masukkan jawaban dari Screenshot yang diperintahkan di halaman 7 pada Component Lifecycle pada pertanyaan ini. 
+- Hasil terminal
+![alt text](Image/foto-tutorial-8/1.jpg?raw=true)
+- Hasil browser console
+![alt text](Image/foto-tutorial-8/2.jpg?raw=true)
+- Setelah memberikan state tambahan untuk memanggil shouldComponentUpdate
+![alt text](Image/foto-tutorial-8/3.jpg?raw=true)
+- Saat dilakukan update state lagi maka, shouldComponentUpdate akan terpanggil lagi
+![alt text](Image/foto-tutorial-8/4.jpg?raw=true)
+- Saat ingin menyambungkan frontend dengan backend namun belum dilakukan permission Crossorigin pada backend
+![alt text](Image/foto-tutorial-8/5.jpg?raw=true)
+![alt text](Image/foto-tutorial-8/6.jpg?raw=true)
+- Setelah sukses mendapatkan data 
+![alt text](Image/foto-tutorial-8/7.jpg?raw=true)
+##### 4. Jelaskan fungsi dari componentDidMount, shouldComponentUpdate, componentDidUpdate, componentWillReceiveProps, componentWillUnmount. Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja yang biasanya menggunakan lifecycle method tersebut”. 
+- componentDidMount termasuk tahap inisiasi. Tahap ini terjadi setelah component di render. pada tahap ini proses pemanggilan ajax dan perubahan isi state setelah proses ajax di panggil. DOM dapat diakses di method ini, memungkinkan manipulasi DOM atau operasi pemanggilan data (ajax). Seluruh operasi DOM seharusnya terjadi di fase ini, bukan di dalam method render.
+- shouldComponentUpdate termasuk tahap update phase. Tahap ini untuk menentukan apakah perubahan akan ditampilkan atau tidak. Tahap ini mengembalikan true atau false dan defaultnya adalah true. Pada tahap ini juga, kita dapat mengakses props dan state yang sekarang sehingga kita dapat mendeteksi kemungkinan perubahan data untuk menentukan apakah re-rendering diperlukan atau tidak.
+- componentDidUpdate termasuk tahap update phase. Tahap setelah component di render, fungsi ini dapat digunakan untuk melakukan operasi DOM setelah data telah diperbaharui.
+- componentWillReceiveProps termasuk tahap update phase. Tahap hanya dipanggil ketika props telah berubah dan tidak pada saat rendering awal. ComponentWillReceiveProps memungkinkan perubahan state berdasar pada props yang sekarang dan props baru, tanpa memicu rendering lagi. 
+- componentWillUnmount dipanggil ketika komponen telah dibuang dari DOM. Fungsi ini berguna ketika aksi-aksi yang berhubungan dengan pembersihan diperlukan, semisal membuang timer yang sebelumnya didefinisikan di componentDidMount.
+
+Referensi : 
+- [Medium - Life Cycle React](https://medium.com/@adhiguna.sabril/mengenal-component-life-cycle-pada-react-js-dengan-es6-d7f558092851)
+- [Anakbit - React Component Lifecycle](https://anakbit.com/memahami-react-component-lifecycle) 
+- [Tutorialspoint - Reactjs Component Life Cycle](https://www.tutorialspoint.com/reactjs/reactjs_component_life_cycle.htm) 
+

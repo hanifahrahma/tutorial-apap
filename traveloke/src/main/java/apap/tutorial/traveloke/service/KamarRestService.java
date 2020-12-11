@@ -13,5 +13,6 @@ public interface KamarRestService {
     KamarModel getKamarByIdKamar(Long idKamar);
     KamarModel changeKamar(Long idKamar, KamarModel kamarModel);
     void deleteKamar(Long idKamar);
+    List<KamarModel> getKamarByIdHotel(Long idKamar);
 
 }
