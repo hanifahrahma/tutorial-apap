@@ -21,7 +21,7 @@ class HotelList extends Component {
             hotelsDefault : [],
             currentPage: 1,
             todosPerPage: 5,
-            hotelsPage: []
+            // hotelPage : []
         };
         this.handleAddHotel = this.handleAddHotel.bind(this)
         this.handleCancel = this.handleCancel.bind(this)
@@ -33,17 +33,20 @@ class HotelList extends Component {
         this.handleEditHotel = this.handleEditHotel.bind(this)
         this.updateSearch = this.updateSearch.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        // this.pagination = this.pagination.bind(this)
         // this.handleClickLoading = this.handleClickLoading.bind(this)
     }
     componentDidMount(){
         // console.log("componentDidMount()")
         this.loadData();
+        
     }
     async loadData() {
         try {
             const { data } = await APIConfig.get("/hotels");
             this.setState({ hotels: data,
             hotelsDefault: data });
+            // this.pagination();
         } catch (error) {
             alert("Oops terjadi masalah pada server");
             console.log(error);
@@ -53,6 +56,7 @@ class HotelList extends Component {
         this.setState({
           currentPage: Number(event.target.id)
         });
+        // this.pagination();
       }
     // async loadKamar(idHotel) {
     //     try {
@@ -63,6 +67,7 @@ class HotelList extends Component {
     //         console.log(error);
     //     }
     // }
+    
     handleAddHotel(){
         this.setState({
             isCreate: true,
@@ -136,9 +141,22 @@ class HotelList extends Component {
         this.setState({keyword: e.target.value})
         const hotelFiltered = this.state.hotels.filter(hotel =>  hotel.namaHotel.toLowerCase().includes(e.target.value.toLowerCase()))
         this.setState({hotelsDefault: hotelFiltered})
+        // this.pagination();
     }
     
-    
+    // pagination(){
+    //     const indexOfLastTodo = this.state.currentPage * this.state.todosPerPage;
+    //     const indexOfFirstTodo = indexOfLastTodo - this.state.todosPerPage;
+    //     const currentTodos = this.state.hotelsDefault.slice(indexOfFirstTodo, indexOfLastTodo);
+    //     const pageNumbers = [];
+    //     for (let i = 1; i <= Math.ceil(this.state.hotels.length / this.state.todosPerPage); i++) {
+    //       pageNumbers.push(i);
+    //     }
+    //     this.setState({
+    //         hotelsDefault : currentTodos,
+    //         hotelPage : pageNumbers
+    //     })
+    // }
     // shouldComponentUpdate(nextProps, nextState){
     //     console.log("shouldComponentUpdate()")
     // }
